@@ -1,0 +1,13 @@
+#playerImage {
+  min-height: 300px;
+  min-width: 150px;
+  border: 2px solid green;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  row-gap: 10px;
+  grid-column-gap: 20px; // Set the horizontal grid gap here
+}
