@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  background: linear-gradient(to right, #243748, #4B749F);
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
