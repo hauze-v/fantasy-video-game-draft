@@ -1,16 +1,21 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { GameService } from '../services/game.service';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-game',
-  standalone: true,
-  imports: [],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss'
 })
 export class GameComponent implements OnInit {
- @Input() public game: string = "";
+  @Input() public game: string = "";
 
-  ngOnInit() {
-    console.log('game', this.game)
+  constructor(
+    private gameService: GameService
+  ) { }
+
+  public async ngOnInit() {
+    let result = await this.gameService.getGameId(this.game).toPromise();
+    console.log('result is: ', result);
   }
 }

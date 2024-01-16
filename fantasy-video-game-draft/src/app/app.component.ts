@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from "./header/header.component";
-import { PlayerRowComponent } from "./player-row/player-row.component";
+import { Component, OnInit } from '@angular/core';
+// import { AuthenticateService } from './services/authenticate.service';
 
 @Component({
     selector: 'app-root',
-    standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
-    imports: [CommonModule, RouterOutlet, HeaderComponent, PlayerRowComponent]
 })
-export class AppComponent {
-  title = 'fantasy-video-game-draft';
+export class AppComponent implements OnInit{
+  public title = 'fantasy-video-game-draft';
+
+  constructor(
+    // private authService: AuthenticateService
+  ) {
+  }
+
+  public async ngOnInit() {
+  //  this.authService.authenticate();
+  }
 }

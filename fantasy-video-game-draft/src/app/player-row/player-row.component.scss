@@ -4,10 +4,29 @@
   border: 2px solid green;
 }
 
-.game-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  row-gap: 10px;
-  grid-column-gap: 20px; // Set the horizontal grid gap here
+#playerRow { 
+  width: 95%;
+  margin: 0 auto;
+  border: 2px solid blue;
 }
+
+.game-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .game {
+    flex: 1 0 calc(16.66667% - 20px); // 100% / 6 columns - grid gap
+    margin-bottom: 10px; // row gap
+  }
+
+  .game:nth-child(6n+1) {
+    margin-left: 0; // remove left margin from the first item in each row
+  }
+
+  .game:nth-child(6n) {
+    margin-right: 0; // remove right margin from the last item in each row
+  }
+}
+
+
