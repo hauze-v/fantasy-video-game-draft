@@ -1,0 +1,25 @@
+<div id="playerRow"
+     class="d-flex mx-4">
+
+  <!-- Player Image Container -->
+  <div id="playerImageContainer"
+       class="player-image-container">
+    <img id="playerImage"
+         src="{{playerImgSrc}}"
+         class="player-image mr-3"
+         alt="">
+    <p id="playerName"
+       class="player-name">{{playerName}}
+    </p>
+  </div>
+
+  <!-- Game grid -->
+  <div class="game-grid">
+    <app-game class="game"
+              *ngFor="let game of draftedGames"
+              [name]="game.name"
+              [imageUrl]="game.imageUrl">
+    </app-game>
+  </div>
+
+</div>

@@ -10,11 +10,9 @@ export class AppComponent implements OnInit{
   public title = 'fantasy-video-game-draft';
 
   constructor(
-    // private authService: AuthenticateService
   ) {
   }
 
   public async ngOnInit() {
-  //  this.authService.authenticate();
   }
 }
