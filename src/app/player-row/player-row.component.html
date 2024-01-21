@@ -18,7 +18,8 @@
     <app-game class="game"
               *ngFor="let game of draftedGames"
               [name]="game.name"
-              [imageUrl]="game.imageUrl">
+              [imageUrl]="game.imageUrl"
+              [releaseDate]="game.releaseDateRaw">
     </app-game>
   </div>
 

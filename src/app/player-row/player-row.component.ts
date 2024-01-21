@@ -117,9 +117,10 @@ export class PlayerRowComponent implements OnInit {
 
       // If additional data is found, update the draftedGame object
       if (additionalGameData) {
+        console.log('First Release Date:', additionalGameData.first_release_date);
         return {
           ...draftedGame,
-          releaseDate: additionalGameData.first_release_date,
+          releaseDateRaw: additionalGameData.first_release_date,
           cover: additionalGameData.cover !== undefined ? additionalGameData.cover : draftedGame.cover,
           status: additionalGameData.status !== undefined ? additionalGameData.status : draftedGame.status
         };

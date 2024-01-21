@@ -6,10 +6,17 @@
 
 .player-image-container {
   position: relative;
-  max-width: 300px;
-  max-height: 468px;
-  border: 2px solid blue;
+  min-width: 200px;
+  min-height: 234px;
   overflow: hidden;
+  margin-right: 16px;
+}
+
+.player-image { 
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 .player-name {
@@ -26,7 +33,6 @@
 .game-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   height: 100%;
 
   .game {

@@ -5,7 +5,8 @@
   position: relative;
   max-height: 200px;
   max-width: 250px;
-  border: 2px solid green;
+  border-radius: 4px;
+  border: 2px solid red;
 }
 
 .game-image {
@@ -15,17 +16,31 @@
   object-fit: cover;
 };
 
-.game-name {
+.game-release-date {
   position: absolute;
   top: 0; /* Set top to 0 */
   right: 0; /* Set right to 0 */
   bottom: 0; /* Set bottom to 0 */
   left: 0; /* Set left to 0 */
   display: flex; /* Use flexbox to align children */
-  align-items: center; /* Center children vertically */
-  justify-content: center; /* Center children horizontally */
+  align-items: end; /* Center children vertically */
+  justify-content: start; /* Center children horizontally */
   color: white;
-  padding: 0 4px;
+  padding: 8px 24px;
   text-align: center;
+  font-size: 14px;
   background-color: rgba(0, 0, 0, 0.5); /* Optional: Add background to make text more readable */
 };
+
+.game-score {
+  position: absolute;
+  top: 0; /* Set top to 0 */
+  right: 0; /* Set right to 0 */
+  bottom: 0; /* Set bottom to 0 */
+  left: 0; /* Set left to 0 */
+  display: flex; /* Use flexbox to align children */
+  align-items: end; /* Center children vertically */
+  justify-content: end; /* Center children horizontally */
+  color: white;
+  padding: 8px 16px;
+}

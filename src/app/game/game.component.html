@@ -5,6 +5,11 @@
        src="{{imageUrl}}"
        alt="{{name}} cover image"
        class="game-image">
-  <p id="gameName"
-     class="game-name">{{name}}</p>
+  <p id="releaseDate"
+     class="game-release-date">{{ releaseDate ? ((releaseDate + 86400) * 1000 | date : 'MMMM d') : 'Unannounced' }}
+  </p>
+  <p id="score"
+     class="game-score">
+     00
+  </p>
 </div>

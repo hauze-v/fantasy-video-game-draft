@@ -9,6 +9,7 @@ import { GameService } from '../services/game.service';
 export class GameComponent implements OnInit, OnChanges {
   @Input() public name: string = "";
   @Input() public imageUrl: string | undefined;
+  @Input() public releaseDate: number | undefined;
   private id: number | null = null;
 
   constructor(
