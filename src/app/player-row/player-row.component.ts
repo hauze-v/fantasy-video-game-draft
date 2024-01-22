@@ -117,7 +117,6 @@ export class PlayerRowComponent implements OnInit {
 
       // If additional data is found, update the draftedGame object
       if (additionalGameData) {
-        console.log('First Release Date:', additionalGameData.first_release_date);
         return {
           ...draftedGame,
           releaseDateRaw: additionalGameData.first_release_date,
@@ -129,8 +128,6 @@ export class PlayerRowComponent implements OnInit {
       // If no additional data is found, return the original draftedGame
       return draftedGame;
     });
-
-    console.log('Updated draftedGames:', this.draftedGames);
 
     // Now that we have the cover lookup number, use the GameService to get the image_id and update the draftedGames array
     let coverData: CoverResponse[] = await this.getCoverData();
@@ -144,7 +141,6 @@ export class PlayerRowComponent implements OnInit {
   private async getCoverData(): Promise<CoverResponse[]> {
     const coverLookupIds: number[] = this.draftedGames.map((game: Game) => game.cover);
     const coverResponse = await firstValueFrom(this.gameService.getCoverImageIds(coverLookupIds));
-    console.log('Cover image ids:', coverResponse);
 
     return coverResponse;
   };
@@ -160,7 +156,6 @@ export class PlayerRowComponent implements OnInit {
       }
     });
 
-    console.log('Cover image urls:', coverData);
 
     // Add the image urls to the draftedGames array where the cover lookup id matches the cover id
     this.draftedGames = this.draftedGames.map((draftedGame: Game) => {
@@ -179,7 +174,6 @@ export class PlayerRowComponent implements OnInit {
       return draftedGame;
     });
 
-    console.log('Updated draftedGames:', this.draftedGames);
   }
 
   private calculateAvgScore(): void {

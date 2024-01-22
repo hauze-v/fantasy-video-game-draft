@@ -18,7 +18,6 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     HttpClientModule,
-    CommonModule,
     RouterModule,
   ],
   providers: [
