@@ -21,7 +21,6 @@
   right: 0; /* Set right to 0 */
   bottom: 0; /* Set bottom to 0 */
   left: 0; /* Set left to 0 */
-  // background-color: rgba(0, 0, 0, 0.5) !important; /* Optional: Add background to make text more readable */
 }
 
 .release-date-container {
@@ -35,14 +34,14 @@
   width: 65%;
   padding-top: 4px;
   padding-bottom: 4px;
-  padding-left: 7.5%;
+  padding-left: 7%;
   padding-right: 0px;
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
 };
 
 .game-release-date {
   color: white;
-  font-size: 14px;
+  font-size: 16px;
 };
 
 .diagonal-line {

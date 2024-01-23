@@ -28,10 +28,11 @@ export enum Status {
 export class PlayerRowComponent implements OnInit {
   @Input() public playerImgSrc: string = "";
   @Input() public playerName: string = '';
+  @Input() public playerColor: string = '';
   public draftedGames: Game[] = [];
-  public playerAvgScore: number | null = null;
-  public playerTotalScore: number | null = null;
-  public playerPlace: number | null = null;
+  public playerAvgScore: number | null = 83 ;
+  public playerTotalScore: number | null = 673;
+  public playerStanding: 1 | 2 | 3 | 4 | null = null;
   public playerStatus: string = Status.unknown;
 
   constructor(
@@ -130,6 +131,7 @@ export class PlayerRowComponent implements OnInit {
         return {
           ...draftedGame,
           releaseDateRaw: additionalGameData.first_release_date,
+          releaseDateDisplay: this.formatReleaseDate(additionalGameData.first_release_date),
           cover: additionalGameData.cover !== undefined ? additionalGameData.cover : draftedGame.cover,
           status: additionalGameData.status !== undefined ? additionalGameData.status : draftedGame.status
         };
@@ -139,14 +141,29 @@ export class PlayerRowComponent implements OnInit {
       return draftedGame;
     });
 
+    console.log('this.draftedGames', this.draftedGames);
+
     // Now that we have the cover lookup number, use the GameService to get the image_id and update the draftedGames array
     let coverData: CoverResponse[] = await this.getCoverData();
 
     // Build and set manual cover image urls
     this.buildCoverImageUrls(coverData);
-
-    // this.changeDetectorRef.detectChanges();
+ 
+    // ? Is this needed
+    this.changeDetectorRef.detectChanges();
   }
+
+  private formatReleaseDate(releaseDate: number | undefined): string {
+    console.log('releaseDate', releaseDate)
+
+    if (releaseDate) {
+      releaseDate = releaseDate + 86400;
+      const date = new Date(releaseDate * 1000);
+      return date.toLocaleString('en-US', { month: 'long', day: 'numeric' });
+    } else {
+      return 'Unknown';
+    }
+  };
 
   private async getCoverData(): Promise<CoverResponse[]> {
     const coverLookupIds: number[] = this.draftedGames.map((game: Game) => game.cover);

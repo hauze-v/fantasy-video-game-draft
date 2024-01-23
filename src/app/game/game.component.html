@@ -16,7 +16,7 @@
          [style.background-color]="'rgb(' + status + ')'">
       <p id="releaseDate"
          class="game-release-date">
-        {{ releaseDate ? ((releaseDate + 86400) * 1000 | date : 'MMMM d') : 'Unannounced' }}
+        {{ releaseDateDisplay }}
       </p>
     </div>
 

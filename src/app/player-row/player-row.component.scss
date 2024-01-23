@@ -8,8 +8,9 @@
   position: relative;
   min-width: 200px;
   min-height: 234px;
-  overflow: hidden;
+  // overflow: hidden;
   margin-right: 16px;
+  border-radius: 4px;
 }
 
 .image-overlay {
@@ -34,11 +35,53 @@
   top: 0;
   right: 0;
   display: flex;
-  margin-left: 4px;
+  margin-left: 2px;
   margin-top: 2px;
   font-size: 48px;
   text-transform: uppercase;
   letter-spacing: 4px;
+}
+
+.player-standing-container {
+  position: absolute;
+  right: -12px;
+  top: -12px;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+  radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+}
+
+.total-score-container {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: space-between;
+  height: 15%;
+  width: 85%;
+  clip-path: polygon(0 100%, 25% 0, 100% 0, 100% 100%);
+}
+
+.average-score-container {
+  position: absolute;
+  right: 0;
+  bottom: 17%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: space-between;
+  height: 15%;
+  width: 65%;
+  background-color: green;
+  clip-path: polygon(5% 100%, 33% 0, 100% 0, 100% 100%);
 }
 
 .game-grid {

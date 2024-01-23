@@ -3,17 +3,33 @@
 
   <!-- Player Image Container -->
   <div id="playerImageContainer"
-       class="player-image-container">
+       class="player-image-container"
+       [style.border]="'4px solid rgb(' + playerColor + ')'">
     <img id="playerImage"
-         src="{{playerImgSrc}}"
+         src="{{ playerImgSrc }}"
          class="player-image mr-3"
          alt="">
     <div class="image-overlay"
-         [style.background-color]="'rgb(' + playerStatus + ', 0.3)'">
+         [style.background-color]="'rgb(' + playerColor + ', 0.4)'">
     </div>
     <p id="playerName"
-       class="player-name">{{playerName}}
+       class="player-name"
+       [style.color]="'rgb(' + playerColor + ')'">
+       {{ playerName }}
     </p>
+    <div class="player-standing-container">
+      <p style="font-size: 24px;">{{ playerStanding }}</p>
+    </div>
+    <div class="average-score-container"
+         [style.background-color]=" 'rgb(' + playerColor + ')' ">
+      <p class="mt-1 mr-1" style="letter-spacing: 3px; font-size: 12px;">AVERAGE</p>
+      <p class="mb-1 mr-1"><span style="font-size: 32px;">{{ playerAvgScore }}</span>.02</p>
+    </div>
+    <div class="total-score-container"
+         [style.background-color]=" 'rgb(' + playerColor + ')' ">
+      <p class="mt-1 mr-1" style="letter-spacing: 3px; font-size: 12px;">TOTAL</p>
+      <p class="mb-1 mr-1"><span style="font-size: 32px;">{{ playerTotalScore }}</span>/1200</p>
+    </div>
   </div>
 
   <!-- Game grid -->
@@ -22,7 +38,8 @@
               *ngFor="let game of draftedGames"
               [name]="game.name"
               [imageUrl]="game.imageUrl"
-              [releaseDate]="game.releaseDateRaw">
+              [releaseDateDisplay]="game.releaseDateDisplay"
+              [releaseDateRaw]="game.releaseDateRaw">
     </app-game>
   </div>
 
