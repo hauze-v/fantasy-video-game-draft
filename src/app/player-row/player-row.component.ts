@@ -12,6 +12,14 @@ export type Game = {
   status?: string | undefined;
 }
 
+export enum Status {
+  'good' = '238, 210, 2',
+  'great' = '92, 184, 92',
+  'average' = '255, 103, 0',
+  'bad' = '255, 14, 14',
+  'unknown' = '91, 92, 98'
+};
+
 @Component({
   selector: 'app-player-row',
   templateUrl: './player-row.component.html',
@@ -23,6 +31,8 @@ export class PlayerRowComponent implements OnInit {
   public draftedGames: Game[] = [];
   public playerAvgScore: number | null = null;
   public playerTotalScore: number | null = null;
+  public playerPlace: number | null = null;
+  public playerStatus: string = Status.unknown;
 
   constructor(
     private gameService: GameService,
@@ -135,7 +145,7 @@ export class PlayerRowComponent implements OnInit {
     // Build and set manual cover image urls
     this.buildCoverImageUrls(coverData);
 
-    this.changeDetectorRef.detectChanges();
+    // this.changeDetectorRef.detectChanges();
   }
 
   private async getCoverData(): Promise<CoverResponse[]> {

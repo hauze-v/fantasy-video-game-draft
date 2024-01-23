@@ -8,6 +8,9 @@
          src="{{playerImgSrc}}"
          class="player-image mr-3"
          alt="">
+    <div class="image-overlay"
+         [style.background-color]="'rgb(' + playerStatus + ', 0.3)'">
+    </div>
     <p id="playerName"
        class="player-name">{{playerName}}
     </p>

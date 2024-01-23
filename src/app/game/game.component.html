@@ -1,6 +1,6 @@
 <div id="gameContainer"
      class="game-container"
-     [style.border]="borderColorRule">
+     [style.border]="'4px solid rgb(' + status + ')'">
 
   <img *ngIf="imageUrl"
        id="gameImage"
@@ -9,21 +9,29 @@
        class="game-image">
 
   <div id="imageOverlay"
-       class="image-overlay">
+       class="image-overlay"
+       [style.background-color]="'rgb(' + status + ', 0.2)'">
     <div id="releaseDateContainer"
          class="release-date-container diagonal-cut"
-         [style.background-color]="backgroundColorRule">
+         [style.background-color]="'rgb(' + status + ')'">
       <p id="releaseDate"
          class="game-release-date">
         {{ releaseDate ? ((releaseDate + 86400) * 1000 | date : 'MMMM d') : 'Unannounced' }}
       </p>
     </div>
 
-    <p id="score"
-       class="game-score"
-       [style.background-color]="backgroundColorRule">
-      00
-    </p>
+    <div class="diagonal-line"
+         [style.background-color]="'rgb(' + status + ')'">
+    </div>
+
+    <div class="score-container"
+         [style.background-color]="'rgb(' + status + ')'">
+      <p id="score"
+         class="game-score">
+        00
+      </p>
+    </div>
+
   </div>
 
 </div>

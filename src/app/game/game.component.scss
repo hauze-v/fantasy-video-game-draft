@@ -21,7 +21,7 @@
   right: 0; /* Set right to 0 */
   bottom: 0; /* Set bottom to 0 */
   left: 0; /* Set left to 0 */
-  background-color: rgba(0, 0, 0, 0.5) !important; /* Optional: Add background to make text more readable */
+  // background-color: rgba(0, 0, 0, 0.5) !important; /* Optional: Add background to make text more readable */
 }
 
 .release-date-container {
@@ -32,10 +32,10 @@
   align-items: end; /* Center children vertically */
   justify-content: start; /* Center children horizontally */
   height: 10%;
-  width: 70%;
+  width: 65%;
   padding-top: 4px;
   padding-bottom: 4px;
-  padding-left: 10%;
+  padding-left: 7.5%;
   padding-right: 0px;
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
 };
@@ -45,14 +45,34 @@
   font-size: 14px;
 };
 
-.game-score {
+.diagonal-line {
+  position: absolute;
+  right: 21%; /* Set right to 0 */
+  bottom: 0; /* Set bottom to 0 */
+  height: 10%;
+  width: 2px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  display: flex;
+  align-items: end;
+  transform: skew(-34deg);
+}
+
+.score-container { 
   position: absolute;
   height: 10%;
+  width: 20%;
   right: 0; /* Set right to 0 */
   bottom: 0; /* Set bottom to 0 */
   display: flex; /* Use flexbox to align children */
   align-items: end; /* Center children vertically */
   justify-content: end; /* Center children horizontally */
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 5%;
+  padding-left: 0px;
+  clip-path: polygon(0 100%, 43% 0, 100% 0, 100% 100%);
+}
+.game-score {  
   color: white;
-  padding: 0px;
 }
