@@ -1,5 +1,5 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Status } from '../player-row/player-row.component';
+import { Component, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Game, Status } from '../player-row/player-row.component';
 
 @Component({
   selector: 'app-game',
@@ -11,19 +11,19 @@ export class GameComponent implements OnInit, OnChanges {
   @Input() public imageUrl: string | undefined;
   @Input() public releaseDateDisplay: string | undefined;
   @Input() public releaseDateRaw: number | undefined;
+  @Input() public score: number | undefined;
   public status: string = Status.unknown;
 
-  public score: number | undefined;
 
   constructor(
   ) { }
 
   public ngOnInit() {
+    // TODO: Can remove this once the API is working
     this.setGameStatus();
   };
 
   public ngOnChanges(changes: SimpleChanges) {
-    // console.log('changes', changes);
 
     // if (changes['releaseDate' || 'score']) {
     //   this.setGameStatusColor();
@@ -31,8 +31,6 @@ export class GameComponent implements OnInit, OnChanges {
   }
 
   private setGameStatus(): void {
-    console.log('inside setGameStatus');
-
     if (this.releaseDateRaw && this.releaseDateDisplay) {
 
       let releaseDate: number = this.releaseDateRaw + 86400;
@@ -45,7 +43,7 @@ export class GameComponent implements OnInit, OnChanges {
       }
 
       // If the game has released, set the status based on the game's score
-      if (releaseDate < Date.now() / 1000) {
+      // if (releaseDate < Date.now() / 1000) {
         if (this.score) {
           if (this.score >= 80) {
             this.status = Status.great;
@@ -57,7 +55,7 @@ export class GameComponent implements OnInit, OnChanges {
             this.status = Status.bad;
           }
         }
-      }
+      // }
 
     } else {
       this.status = Status.unknown;

@@ -26,52 +26,51 @@
 .release-date-container {
   position: absolute;
   bottom: 0; /* Set bottom to 0 */
-  left: 0; /* Set left to 0 */
+  left: -1px; /* Set left to 0 */
   display: flex; /* Use flexbox to align children */
   align-items: end; /* Center children vertically */
   justify-content: start; /* Center children horizontally */
   height: 10%;
-  width: 65%;
+  width: 68%;
   padding-top: 4px;
   padding-bottom: 4px;
-  padding-left: 7%;
+  padding-left: 5%;
   padding-right: 0px;
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
 };
 
 .game-release-date {
-  color: white;
   font-size: 16px;
 };
 
 .diagonal-line {
   position: absolute;
-  right: 21%; /* Set right to 0 */
+  right: 20%; /* Set right to 0 */
   bottom: 0; /* Set bottom to 0 */
   height: 10%;
-  width: 2px;
+  width: 3px;
   padding-top: 4px;
   padding-bottom: 4px;
   display: flex;
   align-items: end;
-  transform: skew(-34deg);
+  transform: skew(-33deg);
 }
 
 .score-container { 
   position: absolute;
   height: 10%;
   width: 20%;
-  right: 0; /* Set right to 0 */
+  right: -1px; /* Set right to 0 */
   bottom: 0; /* Set bottom to 0 */
   display: flex; /* Use flexbox to align children */
   align-items: end; /* Center children vertically */
   justify-content: end; /* Center children horizontally */
   padding-top: 4px;
   padding-bottom: 4px;
-  padding-right: 5%;
+  padding-right: 4%;
   padding-left: 0px;
   clip-path: polygon(0 100%, 43% 0, 100% 0, 100% 100%);
 }
 .game-score {  
-  color: white;
+  // color: white;
 }

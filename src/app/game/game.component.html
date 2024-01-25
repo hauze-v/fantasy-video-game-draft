@@ -10,7 +10,7 @@
 
   <div id="imageOverlay"
        class="image-overlay"
-       [style.background-color]="'rgb(' + status + ', 0.2)'">
+       [style.background-color]="'rgb(' + status + ', 0.3)'">
     <div id="releaseDateContainer"
          class="release-date-container diagonal-cut"
          [style.background-color]="'rgb(' + status + ')'">
@@ -26,9 +26,10 @@
 
     <div class="score-container"
          [style.background-color]="'rgb(' + status + ')'">
-      <p id="score"
+      <p *ngIf="score"
+         id="score"
          class="game-score">
-        00
+        {{ score | number: '1.0-0'}}
       </p>
     </div>
 

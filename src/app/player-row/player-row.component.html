@@ -17,18 +17,20 @@
        [style.color]="'rgb(' + playerColor + ')'">
        {{ playerName }}
     </p>
-    <div class="player-standing-container">
-      <p style="font-size: 24px;">{{ playerStanding }}</p>
+    <div class="player-standing-container"
+         [style.border]=" '4px solid rgb(' + playerColor + ')' ">
+      <p style="font-size: 24px;">
+         {{ playerStanding }}</p>
     </div>
     <div class="average-score-container"
          [style.background-color]=" 'rgb(' + playerColor + ')' ">
       <p class="mt-1 mr-1" style="letter-spacing: 3px; font-size: 12px;">AVERAGE</p>
-      <p class="mb-1 mr-1"><span style="font-size: 32px;">{{ playerAvgScore }}</span>.02</p>
+      <p class="mb-1 mr-1"><span style="font-size: 32px;">{{ playerAvgScore | number: '1.0-0' }}</span>.{{ (playerAvgScore | number:'1.2-2')!.split('.')[1] ?? 00 }}</p>
     </div>
     <div class="total-score-container"
          [style.background-color]=" 'rgb(' + playerColor + ')' ">
       <p class="mt-1 mr-1" style="letter-spacing: 3px; font-size: 12px;">TOTAL</p>
-      <p class="mb-1 mr-1"><span style="font-size: 32px;">{{ playerTotalScore }}</span>/1200</p>
+      <p class="mb-1 mr-1"><span style="font-size: 32px;">{{ playerTotalScore | number: '1.0-0' }}</span>/1200</p>
     </div>
   </div>
 
@@ -36,6 +38,7 @@
   <div class="game-grid">
     <app-game class="game"
               *ngFor="let game of draftedGames"
+              [score]="game.openCriticScore"
               [name]="game.name"
               [imageUrl]="game.imageUrl"
               [releaseDateDisplay]="game.releaseDateDisplay"
