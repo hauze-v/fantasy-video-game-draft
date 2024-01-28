@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
+// import { environment } from '../../environments/environment';
 
 export type GameResponse = {
   id: number;
@@ -28,8 +28,11 @@ export class GameService {
   constructor(
     private http: HttpClient
   ) {
-    this.igdbHeaders = this.igdbHeaders.append('x-api-key', environment.awsApiKey);
-    this.openCriticHeaders = this.openCriticHeaders.append('X-RapidAPI-Key', environment.rapidApiKey);
+    // Grab the API keys from the Netlify environment variables
+    
+
+    // this.igdbHeaders = this.igdbHeaders.append('x-api-key', environment.awsApiKey);
+    // this.openCriticHeaders = this.openCriticHeaders.append('X-RapidAPI-Key', environment.rapidApiKey);
     this.openCriticHeaders = this.openCriticHeaders.append('X-RapidAPI-Host', 'opencritic-api.p.rapidapi.com');
   }
 
@@ -63,8 +66,8 @@ export class GameService {
     console.log('getting open critic score for gameId', gameId);
     const options = { headers: this.openCriticHeaders };
 
-    const gameResponse = this.http.get(`${this.openCriticUrl}/game/${gameId}`, options);
-    console.log('gameResponse', gameResponse);
+    // const gameResponse = this.http.get(`${this.openCriticUrl}/game/${gameId}`, options);
+    // console.log('gameResponse', gameResponse);
 
     // return gameResponse.topCriticScore!;
     // Return an observable of the number 1 for now
