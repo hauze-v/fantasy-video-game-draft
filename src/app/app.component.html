@@ -2,16 +2,16 @@
   <app-header></app-header>
 
   <div class="d-flex direction-column">
-    <app-player-row [playerImgSrc]="'../assets/1.png'"
+    <app-player-row [playerImgSrc]="'../assets/images/john.png'"
                     playerName="John"
                     playerColor="17, 138, 178"
                     class="mb-4"
                     [playerStanding]="standings['John']"
                     (playerScoreUpdated)="updateStandings($event)">
     </app-player-row>
-    <app-player-row [playerImgSrc]="'../assets/2.png'"
+    <app-player-row [playerImgSrc]="'../assets/images/fez.png'"
                     playerName="Fez"
-                    playerColor="95, 15, 64"
+                    playerColor="8, 96, 95"
                     class="mb-4"
                     [playerStanding]="standings['Fez']"
                     (playerScoreUpdated)="updateStandings($event)">
