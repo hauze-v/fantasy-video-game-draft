@@ -26,9 +26,6 @@ yarn-error.log
 !.vscode/tasks.json
 !.vscode/launch.json
 
-# Environment files
-/src/environments/environment.ts
-
 !.vscode/extensions.json
 .history/*
 
