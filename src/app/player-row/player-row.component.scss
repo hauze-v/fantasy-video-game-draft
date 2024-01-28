@@ -156,11 +156,17 @@
   }
 
   .player-image-container {
-    min-width: 80%;
-    min-height: 234px;
+    max-width: 80%;
+    min-height: 605px;
     margin-right: 0;
     border-radius: 4px;
     margin-bottom: 3rem;
+    overflow: hidden;
+  }
+
+  .player-image {
+    height: 100%;
+    width: auto;
   }
 
   .player-name {
