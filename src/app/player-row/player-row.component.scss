@@ -1,14 +1,13 @@
 #playerRow {
+  display: flex;
   width: 95%;
   margin: 0 auto;
-  // border: 2px solid blue;
 }
 
 .player-image-container {
   position: relative;
   min-width: 200px;
   min-height: 234px;
-  // overflow: hidden;
   margin-right: 16px;
   border-radius: 4px;
 }
@@ -58,6 +57,10 @@
   radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
 }
 
+.player-standing-container p {
+  font-size: 1.5rem;
+}
+
 .total-score-container {
   position: absolute;
   right: 0;
@@ -69,6 +72,22 @@
   height: 15%;
   width: 85%;
   clip-path: polygon(0 100%, 25% 0, 100% 0, 100% 100%);
+}
+
+.total-score-container p.header {
+  letter-spacing: 3px; 
+  font-size: 12px;
+  margin-top: 4px;
+  margin-right: 4px;
+}
+
+.total-score-container p.totalScore {
+  margin-bottom: 4px;
+  margin-right: 4px;
+}
+
+.total-score-container p.totalScore span {
+  font-size: 32px;
 }
 
 .average-score-container {
@@ -83,6 +102,22 @@
   width: 65%;
   background-color: green;
   clip-path: polygon(5% 100%, 33% 0, 100% 0, 100% 100%);
+}
+
+.average-score-container p.header {
+  letter-spacing: 3px;
+  font-size: 12px;
+  margin-top: 4px;
+  margin-right: 4px;
+}
+
+.average-score-container p.avgScore {
+  margin-bottom: 4px;
+  margin-right: 4px;
+}
+
+.average-score-container p.avgScore span {
+  font-size: 32px;
 }
 
 .game-grid {
@@ -110,3 +145,84 @@
     margin-right: 0; // remove right margin from the last item in each row
   }
 }
+
+// Media query for mobile devices
+@media (max-width: 450px) {
+
+  #playerRow {
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .player-image-container {
+    min-width: 80%;
+    min-height: 234px;
+    margin-right: 0;
+    border-radius: 4px;
+    margin-bottom: 3rem;
+  }
+
+  .player-name {
+    font-size: 4rem;
+  }
+
+  .player-standing-container {
+    height: 3rem;
+    width: 3rem;
+  }
+
+  .player-standing-container p {
+    font-size: 2rem;
+  }
+
+  .total-score-container p.header {
+    letter-spacing: 3px; 
+    font-size: 1.25rem;
+    margin-top: 4px;
+    margin-right: 4px;
+  }
+  
+  .total-score-container p.totalScore {
+    margin-bottom: 4px;
+    margin-right: 4px;
+    font-size: 2rem;
+  }
+  
+  .total-score-container p.totalScore span {
+    font-size: 3.25rem;
+  }
+
+  .average-score-container p.header {
+    letter-spacing: 3px;
+    font-size: 1.25rem;
+    margin-top: 4px;
+    margin-right: 4px;
+  }
+  
+  .average-score-container p.avgScore {
+    margin-bottom: 4px;
+    margin-right: 4px;
+    font-size: 1.5rem;
+  }
+  
+  .average-score-container p.avgScore span {
+    font-size: 3.25rem;
+  }
+
+  .game-grid {
+    display: block;
+    margin: 0;
+    width: 100%;
+
+    .game {
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 3rem;
+
+      &:nth-last-child(-n+6) {
+        margin-bottom: 3rem;
+      }
+    }
+  }
+};

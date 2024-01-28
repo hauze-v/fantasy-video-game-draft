@@ -20,12 +20,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public ngAfterViewInit() {
     // After the view is initialized, calculate which player is winning
-    this.calculatePlayerStandings();
+    this.calculateStandings();
   }
-
-  private calculatePlayerStandings(): void {
-    
-  };
 
   private calculateStandings(): void {
     // Create an array of player names, sorted by their scores in descending order

@@ -1,38 +1,45 @@
 <div id="gameContainer"
-     class="game-container"
-     [style.border]="'4px solid rgb(' + status + ')'">
+		 class="game-container"
+		 [style.border]="'4px solid rgb(' + status + ')'">
 
-  <img *ngIf="imageUrl"
-       id="gameImage"
-       src="{{imageUrl}}"
-       alt="{{name}} cover image"
-       class="game-image">
+	<img *ngIf="imageUrl"
+			 id="gameImage"
+			 src="{{imageUrl}}"
+			 alt="{{name}} cover image"
+			 class="game-image">
 
-  <div id="imageOverlay"
-       class="image-overlay"
-       [style.background-color]="'rgb(' + status + ', 0.3)'">
-    <div id="releaseDateContainer"
-         class="release-date-container diagonal-cut"
-         [style.background-color]="'rgb(' + status + ')'">
-      <p id="releaseDate"
-         class="game-release-date">
-        {{ releaseDateDisplay }}
-      </p>
-    </div>
+	<div id="imageOverlay"
+			 class="image-overlay"
+			 [style.background-color]="'rgb(' + status + ', 0.3)'">
 
-    <div class="diagonal-line"
-         [style.background-color]="'rgb(' + status + ')'">
-    </div>
+		<!-- Release Date Polygon -->
+		<div id="releaseDateContainer"
+				 class="release-date-container"
+				 [style.background-color]="'rgb(' + status + ')'">
+			<p id="releaseDate"
+				 class="game-release-date">
+				{{ releaseDateDisplay }}
+			</p>
+		</div>
+		<!-- ./Release Date Polygon -->
 
-    <div class="score-container"
-         [style.background-color]="'rgb(' + status + ')'">
-      <p *ngIf="score"
-         id="score"
-         class="game-score">
-        {{ score | number: '1.0-0'}}
-      </p>
-    </div>
+		<!-- Open Critic Score Polygon -->
+		<div class="diagonal-line"
+				 [style.background-color]="'rgb(' + status + ')'">
+		</div>
 
-  </div>
+		<div class="score-container"
+				 [style.background-color]="'rgb(' + status + ')'">
+			<p *ngIf="score"
+				 id="score"
+				 class="game-score">
+				{{ score | number: '1.0-0'}}
+			</p>
+			<p *ngIf="!score">
+				??
+			</p>
+		</div>
+		<!-- ./Open Critic Score Polygon -->
 
+	</div>
 </div>

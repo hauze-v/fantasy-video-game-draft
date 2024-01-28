@@ -1,5 +1,4 @@
-<div id="playerRow"
-     class="d-flex mx-4">
+<div id="playerRow">
 
   <!-- Player Image Container -->
   <div id="playerImageContainer"
@@ -7,7 +6,7 @@
        [style.border]="'4px solid rgb(' + playerColor + ')'">
     <img id="playerImage"
          src="{{ playerImgSrc }}"
-         class="player-image mr-3"
+         class="player-image"
          alt="">
     <div class="image-overlay"
          [style.background-color]="'rgb(' + playerColor + ', 0.4)'">
@@ -19,20 +18,23 @@
     </p>
     <div class="player-standing-container"
          [style.border]=" '4px solid rgb(' + playerColor + ')' ">
-      <p style="font-size: 24px;">
-         {{ playerStanding }}</p>
+      <p>
+         {{ playerStanding }}
+     </p>
     </div>
     <div class="average-score-container"
          [style.background-color]=" 'rgb(' + playerColor + ')' ">
-      <p class="mt-1 mr-1" style="letter-spacing: 3px; font-size: 12px;">AVERAGE</p>
-      <p class="mb-1 mr-1"><span style="font-size: 32px;">{{ playerAvgScore | number: '1.0-0' }}</span>.{{ (playerAvgScore | number:'1.2-2')!.split('.')[1] ?? 00 }}</p>
+      <p class="header">AVERAGE</p>
+      <p class="avgScore"><span>{{ playerAvgScore | number: '1.0-0' }}</span>.{{ (playerAvgScore | number:'1.2-2')!.split('.')[1] ?? 00 }}</p>
     </div>
     <div class="total-score-container"
          [style.background-color]=" 'rgb(' + playerColor + ')' ">
-      <p class="mt-1 mr-1" style="letter-spacing: 3px; font-size: 12px;">TOTAL</p>
-      <p class="mb-1 mr-1"><span style="font-size: 32px;">{{ playerTotalScore | number: '1.0-0' }}</span>/1200</p>
+      <p class="header">TOTAL</p>
+      <p class="totalScore"><span>{{ playerTotalScore | number: '1.0-0' }}</span>/1200</p>
     </div>
   </div>
+  <!-- ./Player Image Container -->
+
 
   <!-- Game grid -->
   <div class="game-grid">

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { CoverResponse, GameResponse, GameService } from '../services/game.service';
 
@@ -55,9 +55,9 @@ export class PlayerRowComponent implements OnInit {
     switch (this.playerName) {
       case 'John':
         this.draftedGames = [
-          { igdbId: 252476, name: `Prince of Persia: The Lost Crown`, cover: 0},
+          { igdbId: 252476, name: `Prince of Persia: The Lost Crown`, cover: 0, openCriticScore: 87 },
           { igdbId: 115060, name: `Dragon's Dogma II`, cover: 0 },
-          { igdbId: 217590, name: `Tekken 8`, cover: 0 },
+          { igdbId: 217590, name: `Tekken 8`, cover: 0, openCriticScore: 90 },
           { igdbId: 185252, name: `Warhammer 40,000: Space Marine II`, cover: 0 },
           { igdbId: 37062, name: `Skull and Bones`, cover: 0 },
           { igdbId: 217594, name: `Rise of the Ronin`, cover: 0 },
@@ -72,7 +72,7 @@ export class PlayerRowComponent implements OnInit {
       case 'Fez':
         this.draftedGames = [
           { igdbId: 228525, name: `Hades II`, cover: 0 },
-          { igdbId: 217623, name: `Like a Dragon: Infinite Wealth`, cover: 0 },
+          { igdbId: 217623, name: `Like a Dragon: Infinite Wealth`, cover: 0, openCriticScore: 90 },
           { igdbId: 240009, name: `Elden Ring: Shadow of the Erdtree`, cover: 0 },
           { igdbId: 213237, name: `Alone in the Dark`, cover: 0 },
           { igdbId: 254340, name: `Princess Peach: Showtime!`, cover: 0 },
@@ -82,7 +82,7 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 252502, name: `Baby Steps`, cover: 0 },
           { igdbId: 115289, name: `Hollow Knight: Silksong`, cover: 0 },
           { igdbId: 116530, name: `Vampire: The Masquerade - Bloodlines 2`, cover: 0 },
-          { igdbId: 252997, name: `Apollo Justice: Ace Attorney Trilogy`, cover: 0 },
+          { igdbId: 252997, name: `Apollo Justice: Ace Attorney Trilogy`, cover: 0, openCriticScore: 82 },
         ];
         break;
       case 'Hauze':
@@ -104,7 +104,7 @@ export class PlayerRowComponent implements OnInit {
       case 'Nick':
         this.draftedGames = [
           { igdbId: 136879, name: `Black Myth: Wukong`, cover: 0 },
-          { igdbId: 277143, name: `The Last of Us Part II: Remastered`, cover: 0 },
+          { igdbId: 277143, name: `The Last of Us Part II: Remastered`, cover: 0, openCriticScore: 91 },
           { igdbId: 37136, name: `Metroid Prime 4`, cover: 0 },
           { igdbId: 250634, name: `Metal Gear Solid Delta: Snake Eater`, cover: 0 },
           { igdbId: 250616, name: `Helldivers II`, cover: 0 },
@@ -150,9 +150,6 @@ export class PlayerRowComponent implements OnInit {
 
     // Build and set manual cover image urls
     this.buildCoverImageUrls(coverData);
- 
-    // ? Is this needed
-    // this.changeDetectorRef.detectChanges();
   }
 
   private formatReleaseDate(releaseDate: number | undefined): string {
@@ -203,41 +200,45 @@ export class PlayerRowComponent implements OnInit {
 
   }
 
-  private getOpenCriticData(): void {
+  private async getOpenCriticData(): Promise<void> {
     // For each game in draftedGames, call the OpenCritic API to get the game's ID
     // Then call the OpenCritic API to get the game's top critic score
 
     // Get the OpenCritic game IDs
-    this.draftedGames.forEach(async (game: Game) => {
-      // game.openCriticId = await firstValueFrom(this.gameService.getOpenCriticGameId(game.name));
+    // this.draftedGames.forEach(async (game: Game) => {
+    //   game.openCriticId = await firstValueFrom(this.gameService.getOpenCriticGameId(game.name));
 
-      // Get the OpenCritic game scores
-      // game.openCriticScore = await firstValueFrom(this.gameService.getOpenCriticScore(game.openCriticId));
-    });
-
+    //   // Get the OpenCritic game scores
+    //   game.openCriticScore = await firstValueFrom(this.gameService.getOpenCriticScore(game.openCriticId));
+    // });
   }
 
   private calculateAvgScore(): void {
     let totalScore: number = 0;
+    let counter: number = 0;
+
     // Calculate the player's average score based on their list of drafted games and the OpenCritic score
     this.draftedGames.forEach((game: Game) => {
       if (game.openCriticScore) {
         totalScore += game.openCriticScore;
+        counter++;
       }
     });
 
-    this.playerAvgScore = totalScore / this.draftedGames.length;
+    if (counter === 0) {
+      this.playerAvgScore = 0;
+      return;
+    } else {
+      this.playerAvgScore = totalScore / counter;
+    }
 
     // Emit the player's average score to the parent component
     this.playerScoreUpdated.emit({ playerName: this.playerName, avgScore: this.playerAvgScore })
   }
 
   private calculateTotalScore(): void {
-    // Calculate the player's total score based on their list of drafted games and the OpenCritic score
     this.draftedGames.forEach((game: Game) => {
       if (game.openCriticScore) {
-        console.log('game score', game.openCriticScore)
-        console.log('this.playerTotalScore', this.playerTotalScore)
         this.playerTotalScore += game.openCriticScore;
       }
     });
