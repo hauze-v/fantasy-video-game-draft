@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export type GameResponse = {
   id: number;
@@ -29,11 +30,7 @@ export class GameService {
   ) {
     
 
-    // this.igdbHeaders = this.igdbHeaders.append('x-api-key', environment.awsApiKey);
-    if (process.env['awsApiKey']) {
-      this.igdbHeaders = this.igdbHeaders.append('x-api-key', process.env['awsApiKey']);      
-    };
-
+    this.igdbHeaders = this.igdbHeaders.append('x-api-key', environment.awsApiKey);
     // this.openCriticHeaders = this.openCriticHeaders.append('X-RapidAPI-Key', environment.rapidApiKey);
     this.openCriticHeaders = this.openCriticHeaders.append('X-RapidAPI-Host', 'opencritic-api.p.rapidapi.com');
   }
