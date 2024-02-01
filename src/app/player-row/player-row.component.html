@@ -25,7 +25,7 @@
     <div class="average-score-container"
          [style.background-color]=" 'rgb(' + playerColor + ')' ">
       <p class="header">AVERAGE</p>
-      <p class="avgScore"><span>{{ playerAvgScore | number: '1.0-0' }}</span>.{{ (playerAvgScore | number:'1.2-2')!.split('.')[1] ?? 00 }}</p>
+      <p class="avgScore"><span>{{ (playerAvgScore | number: '1.2-2')!.split('.')[0] }}</span>.{{ (playerAvgScore | number:'1.2-2')!.split('.')[1] ?? 00 }}</p>
     </div>
     <div class="total-score-container"
          [style.background-color]=" 'rgb(' + playerColor + ')' ">

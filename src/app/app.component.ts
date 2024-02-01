@@ -26,13 +26,13 @@ export class AppComponent implements OnInit, AfterViewInit {
   private calculateStandings(): void {
     // Create an array of player names, sorted by their scores in descending order
     const sortedPlayers = Object.keys(this.playerScores).sort((a, b) => this.playerScores[b] - this.playerScores[a]);
+    console.log('this.playerScores', this.playerScores)
 
     // Assign standings
     sortedPlayers.forEach((playerName, index) => {
       this.standings[playerName] = index + 1; // 1 for highest score, 2 for second highest, etc.
     });
 
-    // The standings object now has the standing for each player
   }
 
   /* ----------------------------- Event Handlers ----------------------------- */
