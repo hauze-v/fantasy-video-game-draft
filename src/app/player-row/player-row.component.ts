@@ -88,7 +88,7 @@ export class PlayerRowComponent implements OnInit {
       case 'Hauze':
         this.draftedGames = [
           { igdbId: 133236, name: `Final Fantasy VII Rebirth`, cover: 0 },
-          { igdbId: 252647, name: `Persona 3 Reload`, cover: 0 },
+          { igdbId: 252647, name: `Persona 3 Reload`, cover: 0, openCriticScore: 89 },
           { igdbId: 259338, name: `Final Fantasy XIV: Dawntrail`, cover: 0 },
           { igdbId: 136511, name: `Braid: Anniversary Edition`, cover: 0 },
           { igdbId: 68353, name: `Unicorn Overlord`, cover: 0 },
