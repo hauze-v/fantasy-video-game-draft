@@ -93,7 +93,7 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 136511, name: `Braid: Anniversary Edition`, cover: 0 },
           { igdbId: 68353, name: `Unicorn Overlord`, cover: 0 },
           { igdbId: 266690, name: `Paper Mario: The Thousand-Year Door`, cover: 0 },
-          { igdbId: 136627, name: `Suicide Squad: Kill the Justice League`, cover: 0 },
+          { igdbId: 136627, name: `Suicide Squad: Kill the Justice League`, cover: 0, openCriticScore: 59 },
           { igdbId: 217592, name: `Pacific Drive`, cover: 0 },
           { igdbId: 250645, name: `Destiny 2: The Final Shape`, cover: 0 },
           { igdbId: 262529, name: `Little Nightmares III`, cover: 0 },
@@ -113,7 +113,7 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 222341, name: `Silent Hill 2`, cover: 0 },
           { igdbId: 117170, name: `Stellar Blade`, cover: 0 },
           { igdbId: 261145, name: `South Park: Snow Day!`, cover: 0 },
-          { igdbId: 255396, name: `JuJutsu Kaisen Cursed Clash`, cover: 0 },
+          { igdbId: 255396, name: `JuJutsu Kaisen Cursed Clash`, cover: 0, openCriticScore: 38 },
           { igdbId: 279635, name: `The Casting of Frank Stone`, cover: 0 },
         ];
         break;
