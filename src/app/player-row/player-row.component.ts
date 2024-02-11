@@ -97,7 +97,7 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 217592, name: `Pacific Drive`, cover: 0 },
           { igdbId: 250645, name: `Destiny 2: The Final Shape`, cover: 0 },
           { igdbId: 262529, name: `Little Nightmares III`, cover: 0 },
-          { igdbId: 250623, name: `Foamstars`, cover: 0 },
+          { igdbId: 250623, name: `Foamstars`, cover: 0, openCriticScore: 65 },
           { igdbId: 135994, name: `Avowed`, cover: 0 },
         ];
         break;
