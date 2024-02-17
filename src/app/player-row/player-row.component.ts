@@ -107,7 +107,7 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 277143, name: `The Last of Us Part II: Remastered`, cover: 0, openCriticScore: 91 },
           { igdbId: 37136, name: `Metroid Prime 4`, cover: 0 },
           { igdbId: 250634, name: `Metal Gear Solid Delta: Snake Eater`, cover: 0 },
-          { igdbId: 250616, name: `Helldivers II`, cover: 0 },
+          { igdbId: 250616, name: `Helldivers II`, cover: 0, openCriticScore: 84 },
           { igdbId: 266674, name: `Mario vs. Donkey Kong`, cover: 0 },
           { igdbId: 95118, name: `Last Epoch`, cover: 0 },
           { igdbId: 222341, name: `Silent Hill 2`, cover: 0 },
