@@ -59,7 +59,7 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 115060, name: `Dragon's Dogma II`, cover: 0 },
           { igdbId: 217590, name: `Tekken 8`, cover: 0, openCriticScore: 90 },
           { igdbId: 185252, name: `Warhammer 40,000: Space Marine II`, cover: 0 },
-          { igdbId: 37062, name: `Skull and Bones`, cover: 0 },
+          { igdbId: 37062, name: `Skull and Bones`, cover: 0, openCriticScore: 63 },
           { igdbId: 217594, name: `Rise of the Ronin`, cover: 0 },
           { igdbId: 122123, name: `Homeworld 3`, cover: 0 },
           { igdbId: 127342, name: `Senua's Saga: Hellblade II`, cover: 0 },
@@ -93,27 +93,27 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 136511, name: `Braid: Anniversary Edition`, cover: 0 },
           { igdbId: 68353, name: `Unicorn Overlord`, cover: 0 },
           { igdbId: 266690, name: `Paper Mario: The Thousand-Year Door`, cover: 0 },
-          { igdbId: 136627, name: `Suicide Squad: Kill the Justice League`, cover: 0, openCriticScore: 59 },
+          { igdbId: 136627, name: `Suicide Squad: Kill the Justice League`, cover: 0, openCriticScore: 60 },
           { igdbId: 217592, name: `Pacific Drive`, cover: 0 },
           { igdbId: 250645, name: `Destiny 2: The Final Shape`, cover: 0 },
           { igdbId: 262529, name: `Little Nightmares III`, cover: 0 },
-          { igdbId: 250623, name: `Foamstars`, cover: 0, openCriticScore: 65 },
+          { igdbId: 250623, name: `Foamstars`, cover: 0, openCriticScore: 59 },
           { igdbId: 135994, name: `Avowed`, cover: 0 },
         ];
         break;
       case 'Nick':
         this.draftedGames = [
           { igdbId: 136879, name: `Black Myth: Wukong`, cover: 0 },
-          { igdbId: 277143, name: `The Last of Us Part II: Remastered`, cover: 0, openCriticScore: 91 },
+          { igdbId: 277143, name: `The Last of Us Part II: Remastered`, cover: 0, openCriticScore: 90 },
           { igdbId: 37136, name: `Metroid Prime 4`, cover: 0 },
           { igdbId: 250634, name: `Metal Gear Solid Delta: Snake Eater`, cover: 0 },
-          { igdbId: 250616, name: `Helldivers II`, cover: 0, openCriticScore: 84 },
-          { igdbId: 266674, name: `Mario vs. Donkey Kong`, cover: 0 },
+          { igdbId: 250616, name: `Helldivers II`, cover: 0, openCriticScore: 83 },
+          { igdbId: 266674, name: `Mario vs. Donkey Kong`, cover: 0, openCriticScore: 78 },
           { igdbId: 95118, name: `Last Epoch`, cover: 0 },
           { igdbId: 222341, name: `Silent Hill 2`, cover: 0 },
           { igdbId: 117170, name: `Stellar Blade`, cover: 0 },
           { igdbId: 261145, name: `South Park: Snow Day!`, cover: 0 },
-          { igdbId: 255396, name: `JuJutsu Kaisen Cursed Clash`, cover: 0, openCriticScore: 38 },
+          { igdbId: 255396, name: `JuJutsu Kaisen Cursed Clash`, cover: 0, openCriticScore: 49 },
           { igdbId: 279635, name: `The Casting of Frank Stone`, cover: 0 },
         ];
         break;
