@@ -87,14 +87,14 @@ export class PlayerRowComponent implements OnInit {
         break;
       case 'Hauze':
         this.draftedGames = [
-          { igdbId: 133236, name: `Final Fantasy VII Rebirth`, cover: 0 },
+          { igdbId: 133236, name: `Final Fantasy VII Rebirth`, cover: 0, openCriticScore: 93 },
           { igdbId: 252647, name: `Persona 3 Reload`, cover: 0, openCriticScore: 89 },
           { igdbId: 259338, name: `Final Fantasy XIV: Dawntrail`, cover: 0 },
           { igdbId: 136511, name: `Braid: Anniversary Edition`, cover: 0 },
           { igdbId: 68353, name: `Unicorn Overlord`, cover: 0 },
           { igdbId: 266690, name: `Paper Mario: The Thousand-Year Door`, cover: 0 },
           { igdbId: 136627, name: `Suicide Squad: Kill the Justice League`, cover: 0, openCriticScore: 60 },
-          { igdbId: 217592, name: `Pacific Drive`, cover: 0 },
+          { igdbId: 217592, name: `Pacific Drive`, cover: 0, openCriticScore: 79 },
           { igdbId: 250645, name: `Destiny 2: The Final Shape`, cover: 0 },
           { igdbId: 262529, name: `Little Nightmares III`, cover: 0 },
           { igdbId: 250623, name: `Foamstars`, cover: 0, openCriticScore: 59 },
@@ -108,7 +108,7 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 37136, name: `Metroid Prime 4`, cover: 0 },
           { igdbId: 250634, name: `Metal Gear Solid Delta: Snake Eater`, cover: 0 },
           { igdbId: 250616, name: `Helldivers II`, cover: 0, openCriticScore: 82 },
-          { igdbId: 266674, name: `Mario vs. Donkey Kong`, cover: 0, openCriticScore: 78 },
+          { igdbId: 266674, name: `Mario vs. Donkey Kong`, cover: 0, openCriticScore: 77 },
           { igdbId: 95118, name: `Last Epoch`, cover: 0 },
           { igdbId: 222341, name: `Silent Hill 2`, cover: 0 },
           { igdbId: 117170, name: `Stellar Blade`, cover: 0 },
