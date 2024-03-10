@@ -91,7 +91,7 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 252647, name: `Persona 3 Reload`, cover: 0, openCriticScore: 89 },
           { igdbId: 259338, name: `Final Fantasy XIV: Dawntrail`, cover: 0 },
           { igdbId: 136511, name: `Braid: Anniversary Edition`, cover: 0 },
-          { igdbId: 68353, name: `Unicorn Overlord`, cover: 0 },
+          { igdbId: 68353, name: `Unicorn Overlord`, cover: 0, openCriticScore: 88 },
           { igdbId: 266690, name: `Paper Mario: The Thousand-Year Door`, cover: 0 },
           { igdbId: 136627, name: `Suicide Squad: Kill the Justice League`, cover: 0, openCriticScore: 60 },
           { igdbId: 217592, name: `Pacific Drive`, cover: 0, openCriticScore: 79 },
