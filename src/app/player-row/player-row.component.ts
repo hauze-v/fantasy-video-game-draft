@@ -34,7 +34,7 @@ export class PlayerRowComponent implements OnInit {
   @Input() public playerStanding: number | null = null;
   @Output() playerScoreUpdated = new EventEmitter<{ playerName: string, avgScore: number }>();
   public draftedGames: Game[] = [];
-  public playerAvgScore: number | null = 83 ;
+  public playerAvgScore: number | null = 83;
   public playerTotalScore: number = 0;
   public playerStatus: string = Status.unknown;
 
@@ -61,23 +61,23 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 185252, name: `Warhammer 40,000: Space Marine II`, cover: 0 },
           { igdbId: 37062, name: `Skull and Bones`, cover: 0, openCriticScore: 61 },
           { igdbId: 217594, name: `Rise of the Ronin`, cover: 0, openCriticScore: 76 },
-          { igdbId: 122123, name: `Homeworld 3`, cover: 0 },
-          { igdbId: 127342, name: `Senua's Saga: Hellblade II`, cover: 0 },
+          { igdbId: 122123, name: `Homeworld 3`, cover: 0, openCriticScore: 77 },
+          { igdbId: 127342, name: `Senua's Saga: Hellblade II`, cover: 0, openCriticScore: 81 },
           { igdbId: 30208, name: `Dragon Age: Dreadwolf`, cover: 0 },
           { igdbId: 216320, name: `Assassin's Creed Red`, cover: 0 },
           { igdbId: 26602, name: `Metaphor: ReFantazio`, cover: 0 },
-          { igdbId: 279636, name: `Visions of Mana`, cover: 0 }
+          { igdbId: 279636, name: `Visions of Mana`, cover: 0, openCriticScore: 77 },
         ];
         break;
       case 'Buster':
         this.draftedGames = [
           { igdbId: 228525, name: `Hades II`, cover: 0 },
           { igdbId: 217623, name: `Like a Dragon: Infinite Wealth`, cover: 0, openCriticScore: 90 },
-          { igdbId: 240009, name: `Elden Ring: Shadow of the Erdtree`, cover: 0 },
+          { igdbId: 240009, name: `Elden Ring: Shadow of the Erdtree`, cover: 0, openCriticScore: 94 },
           { igdbId: 213237, name: `Alone in the Dark`, cover: 0, openCriticScore: 63 },
           { igdbId: 254340, name: `Princess Peach: Showtime!`, cover: 0, openCriticScore: 78 },
           { igdbId: 266687, name: `Bandle Tale: A League of Legends Story`, cover: 0, openCriticScore: 74 },
-          { igdbId: 252827, name: `Star Wars Outlaws`, cover: 0 },
+          { igdbId: 252827, name: `Star Wars Outlaws`, cover: 0, openCriticScore: 77 },
           { igdbId: 101440, name: `S.T.A.L.K.E.R. 2: Heart of Chornobyl`, cover: 0 },
           { igdbId: 252502, name: `Baby Steps`, cover: 0 },
           { igdbId: 115289, name: `Hollow Knight: Silksong`, cover: 0 },
@@ -89,13 +89,13 @@ export class PlayerRowComponent implements OnInit {
         this.draftedGames = [
           { igdbId: 133236, name: `Final Fantasy VII Rebirth`, cover: 0, openCriticScore: 93 },
           { igdbId: 252647, name: `Persona 3 Reload`, cover: 0, openCriticScore: 89 },
-          { igdbId: 259338, name: `Final Fantasy XIV: Dawntrail`, cover: 0 },
-          { igdbId: 136511, name: `Braid: Anniversary Edition`, cover: 0 },
+          { igdbId: 259338, name: `Final Fantasy XIV: Dawntrail`, cover: 0, openCriticScore: 81 },
+          { igdbId: 136511, name: `Braid: Anniversary Edition`, cover: 0, openCriticScore: 89 },
           { igdbId: 68353, name: `Unicorn Overlord`, cover: 0, openCriticScore: 88 },
-          { igdbId: 266690, name: `Paper Mario: The Thousand-Year Door`, cover: 0 },
+          { igdbId: 266690, name: `Paper Mario: The Thousand-Year Door`, cover: 0, openCriticScore: 89 },
           { igdbId: 136627, name: `Suicide Squad: Kill the Justice League`, cover: 0, openCriticScore: 60 },
           { igdbId: 217592, name: `Pacific Drive`, cover: 0, openCriticScore: 79 },
-          { igdbId: 250645, name: `Destiny 2: The Final Shape`, cover: 0 },
+          { igdbId: 250645, name: `Destiny 2: The Final Shape`, cover: 0, openCriticScore: 91 },
           { igdbId: 262529, name: `Little Nightmares III`, cover: 0 },
           { igdbId: 250623, name: `Foamstars`, cover: 0, openCriticScore: 59 },
           { igdbId: 135994, name: `Avowed`, cover: 0 },
@@ -103,16 +103,16 @@ export class PlayerRowComponent implements OnInit {
         break;
       case 'Nick':
         this.draftedGames = [
-          { igdbId: 136879, name: `Black Myth: Wukong`, cover: 0 },
+          { igdbId: 136879, name: `Black Myth: Wukong`, cover: 0, openCriticScore: 81 },
           { igdbId: 277143, name: `The Last of Us Part II: Remastered`, cover: 0, openCriticScore: 90 },
           { igdbId: 37136, name: `Metroid Prime 4`, cover: 0 },
           { igdbId: 250634, name: `Metal Gear Solid Delta: Snake Eater`, cover: 0 },
           { igdbId: 250616, name: `Helldivers II`, cover: 0, openCriticScore: 82 },
           { igdbId: 266674, name: `Mario vs. Donkey Kong`, cover: 0, openCriticScore: 77 },
-          { igdbId: 95118, name: `Last Epoch`, cover: 0 },
+          { igdbId: 95118, name: `Last Epoch`, cover: 0, openCriticScore: 81 },
           { igdbId: 222341, name: `Silent Hill 2`, cover: 0 },
-          { igdbId: 117170, name: `Stellar Blade`, cover: 0 },
-          { igdbId: 261145, name: `South Park: Snow Day!`, cover: 0 },
+          { igdbId: 117170, name: `Stellar Blade`, cover: 0, openCriticScore: 82 },
+          { igdbId: 261145, name: `South Park: Snow Day!`, cover: 0, openCriticScore: 60 },
           { igdbId: 255396, name: `JuJutsu Kaisen Cursed Clash`, cover: 0, openCriticScore: 49 },
           { igdbId: 279635, name: `The Casting of Frank Stone`, cover: 0 },
         ];
