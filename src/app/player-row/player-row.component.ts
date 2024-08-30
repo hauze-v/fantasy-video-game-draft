@@ -64,7 +64,7 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 122123, name: `Homeworld 3`, cover: 0, openCriticScore: 77 },
           { igdbId: 127342, name: `Senua's Saga: Hellblade II`, cover: 0, openCriticScore: 81 },
           { igdbId: 30208, name: `Dragon Age: Dreadwolf`, cover: 0 },
-          { igdbId: 216320, name: `Assassin's Creed Red`, cover: 0 },
+          { igdbId: 300976, name: `Assassin's Creed Shadows`, cover: 0 },
           { igdbId: 26602, name: `Metaphor: ReFantazio`, cover: 0 },
           { igdbId: 279636, name: `Visions of Mana`, cover: 0, openCriticScore: 77 },
         ];
