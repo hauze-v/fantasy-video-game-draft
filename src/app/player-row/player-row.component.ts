@@ -37,6 +37,8 @@ export class PlayerRowComponent implements OnInit {
   public playerAvgScore: number | null = 83;
   public playerTotalScore: number = 0;
   public playerStatus: string = Status.unknown;
+  private readonly GAMES_TO_COUNT = 10;
+  private readonly END_OF_2024 = 1735689600; // Unix timestamp for 12/31/2024 23:59:59
 
 
   constructor(
@@ -46,9 +48,9 @@ export class PlayerRowComponent implements OnInit {
   public ngOnInit() {
     this.getDraftedGames();
     this.getIGDBData();
-    this.getOpenCriticData();
-    this.calculateTotalScore();
-    this.calculateAvgScore();
+    // TODO: Maybe scrape someday?
+    // this.getOpenCriticData();
+    this.processScores();
   }
 
   private getDraftedGames(): void {
@@ -58,14 +60,14 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 252476, name: `Prince of Persia: The Lost Crown`, cover: 0, openCriticScore: 87 },
           { igdbId: 115060, name: `Dragon's Dogma II`, cover: 0, openCriticScore: 89 },
           { igdbId: 217590, name: `Tekken 8`, cover: 0, openCriticScore: 90 },
-          { igdbId: 185252, name: `Warhammer 40,000: Space Marine II`, cover: 0 },
+          { igdbId: 185252, name: `Warhammer 40,000: Space Marine II`, cover: 0, openCriticScore: 81 },
           { igdbId: 37062, name: `Skull and Bones`, cover: 0, openCriticScore: 61 },
           { igdbId: 217594, name: `Rise of the Ronin`, cover: 0, openCriticScore: 76 },
           { igdbId: 122123, name: `Homeworld 3`, cover: 0, openCriticScore: 77 },
           { igdbId: 127342, name: `Senua's Saga: Hellblade II`, cover: 0, openCriticScore: 81 },
-          { igdbId: 30208, name: `Dragon Age: Dreadwolf`, cover: 0 },
+          { igdbId: 30208, name: `Dragon Age: The Veilguard`, cover: 0, openCriticScore: 79 },
           { igdbId: 300976, name: `Assassin's Creed Shadows`, cover: 0 },
-          { igdbId: 26602, name: `Metaphor: ReFantazio`, cover: 0 },
+          { igdbId: 26602, name: `Metaphor: ReFantazio`, cover: 0, openCriticScore: 92 },
           { igdbId: 279636, name: `Visions of Mana`, cover: 0, openCriticScore: 77 },
         ];
         break;
@@ -78,7 +80,7 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 254340, name: `Princess Peach: Showtime!`, cover: 0, openCriticScore: 78 },
           { igdbId: 266687, name: `Bandle Tale: A League of Legends Story`, cover: 0, openCriticScore: 74 },
           { igdbId: 252827, name: `Star Wars Outlaws`, cover: 0, openCriticScore: 77 },
-          { igdbId: 101440, name: `S.T.A.L.K.E.R. 2: Heart of Chornobyl`, cover: 0 },
+          { igdbId: 101440, name: `S.T.A.L.K.E.R. 2: Heart of Chornobyl`, cover: 0, openCriticScore: 74 },
           { igdbId: 252502, name: `Baby Steps`, cover: 0 },
           { igdbId: 115289, name: `Hollow Knight: Silksong`, cover: 0 },
           { igdbId: 116530, name: `Vampire: The Masquerade - Bloodlines 2`, cover: 0 },
@@ -106,15 +108,15 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 136879, name: `Black Myth: Wukong`, cover: 0, openCriticScore: 81 },
           { igdbId: 277143, name: `The Last of Us Part II: Remastered`, cover: 0, openCriticScore: 90 },
           { igdbId: 37136, name: `Metroid Prime 4`, cover: 0 },
-          { igdbId: 250634, name: `Metal Gear Solid Delta: Snake Eater`, cover: 0 },
+          { igdbId: 250634, name: `Metal Gear Solid Delta: Snake Eater`, cover: 0, },
           { igdbId: 250616, name: `Helldivers II`, cover: 0, openCriticScore: 82 },
           { igdbId: 266674, name: `Mario vs. Donkey Kong`, cover: 0, openCriticScore: 77 },
           { igdbId: 95118, name: `Last Epoch`, cover: 0, openCriticScore: 81 },
-          { igdbId: 222341, name: `Silent Hill 2`, cover: 0 },
+          { igdbId: 222341, name: `Silent Hill 2`, cover: 0, openCriticScore: 87 },
           { igdbId: 117170, name: `Stellar Blade`, cover: 0, openCriticScore: 82 },
           { igdbId: 261145, name: `South Park: Snow Day!`, cover: 0, openCriticScore: 60 },
           { igdbId: 255396, name: `JuJutsu Kaisen Cursed Clash`, cover: 0, openCriticScore: 49 },
-          { igdbId: 279635, name: `The Casting of Frank Stone`, cover: 0 },
+          { igdbId: 279635, name: `The Casting of Frank Stone`, cover: 0, openCriticScore: 68 },
         ];
         break;
     }
@@ -134,8 +136,8 @@ export class PlayerRowComponent implements OnInit {
       if (additionalGameData) {
         return {
           ...draftedGame,
-          releaseDateRaw: additionalGameData.first_release_date,
-          releaseDateDisplay: this.formatReleaseDate(additionalGameData.first_release_date),
+          releaseDateRaw: draftedGame.igdbId === 228525 ? undefined : additionalGameData.first_release_date,
+          releaseDateDisplay: draftedGame.igdbId === 228525 ? undefined : this.formatReleaseDate(additionalGameData.first_release_date),
           cover: additionalGameData.cover !== undefined ? additionalGameData.cover : draftedGame.cover,
           status: additionalGameData.status !== undefined ? additionalGameData.status : draftedGame.status
         };
@@ -158,7 +160,7 @@ export class PlayerRowComponent implements OnInit {
       const date = new Date(releaseDate * 1000);
       return date.toLocaleString('en-US', { month: 'long', day: 'numeric' });
     } else {
-      return 'Unknown';
+      return 'Delayed';
     }
   };
 
@@ -200,47 +202,52 @@ export class PlayerRowComponent implements OnInit {
 
   }
 
-  private async getOpenCriticData(): Promise<void> {
-    // For each game in draftedGames, call the OpenCritic API to get the game's ID
-    // Then call the OpenCritic API to get the game's top critic score
+  // private async getOpenCriticData(): Promise<void> {
+  //   // For each game in draftedGames, call the OpenCritic API to get the game's ID
+  //   // Then call the OpenCritic API to get the game's top critic score
 
-    // Get the OpenCritic game IDs
-    // this.draftedGames.forEach(async (game: Game) => {
-    //   game.openCriticId = await firstValueFrom(this.gameService.getOpenCriticGameId(game.name));
+  //   // Get the OpenCritic game IDs
+  //   this.draftedGames.forEach(async (game: Game) => {
+  //     game.openCriticId = await firstValueFrom(this.gameService.getOpenCriticGameId(game.name));
 
-    //   // Get the OpenCritic game scores
-    //   game.openCriticScore = await firstValueFrom(this.gameService.getOpenCriticScore(game.openCriticId));
-    // });
-  }
+  //     // Get the OpenCritic game scores
+  //     game.openCriticScore = await firstValueFrom(this.gameService.getOpenCriticScore(game.openCriticId));
+  //   });
+  // }
 
-  private calculateAvgScore(): void {
-    let totalScore: number = 0;
-    let counter: number = 0;
-
-    // Calculate the player's average score based on their list of drafted games and the OpenCritic score
-    this.draftedGames.forEach((game: Game) => {
-      if (game.openCriticScore) {
-        totalScore += game.openCriticScore;
-        counter++;
+  private processScores(): void {
+    // First, set scores of 0 for delayed games
+    this.draftedGames = this.draftedGames.map(game => {
+      if (!game.openCriticScore) {
+        // If no score and it's a delayed game (or no release date, which we know are all delayed)
+        if (!game.releaseDateRaw || game.releaseDateRaw > this.END_OF_2024) {
+          return {
+            ...game,
+            openCriticScore: 0
+          };
+        }
       }
+      return game;
     });
 
-    if (counter === 0) {
-      this.playerAvgScore = 0;
-      return;
-    } else {
-      this.playerAvgScore = totalScore / counter;
-    }
+    // Get all scores and sort them in descending order
+    const scores = this.draftedGames
+      .map(game => game.openCriticScore || 0)
+      .sort((a, b) => b - a);
 
-    // Emit the player's average score to the parent component
-    this.playerScoreUpdated.emit({ playerName: this.playerName, avgScore: this.playerAvgScore })
-  }
+    // Take the top 10 scores
+    const topScores = scores.slice(0, this.GAMES_TO_COUNT);
 
-  private calculateTotalScore(): void {
-    this.draftedGames.forEach((game: Game) => {
-      if (game.openCriticScore) {
-        this.playerTotalScore += game.openCriticScore;
-      }
+    // Calculate total from top 10 scores
+    this.playerTotalScore = topScores.reduce((sum, score) => sum + score, 0);
+
+    // Calculate average from the total of top 10 scores
+    this.playerAvgScore = this.playerTotalScore / this.GAMES_TO_COUNT;
+
+    // Emit the updated average score
+    this.playerScoreUpdated.emit({
+      playerName: this.playerName,
+      avgScore: this.playerAvgScore
     });
-  };
+  }
 }
