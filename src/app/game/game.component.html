@@ -5,7 +5,7 @@
 	<img *ngIf="imageUrl"
 			 id="gameImage"
 			 src="{{imageUrl}}"
-			 alt="{{name}} cover image"
+			 alt="cover image"
 			 class="game-image">
 
 	<div id="imageOverlay"
@@ -35,7 +35,7 @@
 				 class="game-score">
 				{{ score | number: '1.0-0'}}
 			</p>
-			<p *ngIf="!score">0</p>
+			<p *ngIf="!score">??</p>
 		</div>
 		<!-- ./Open Critic Score Polygon -->
 

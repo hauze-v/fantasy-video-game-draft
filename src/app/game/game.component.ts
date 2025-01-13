@@ -7,7 +7,6 @@ import { Game, Status } from '../player-row/player-row.component';
   styleUrl: './game.component.scss'
 })
 export class GameComponent implements OnInit, OnChanges {
-  @Input() public name: string = "";
   @Input() public imageUrl: string | undefined;
   @Input() public releaseDateDisplay: string | undefined;
   @Input() public releaseDateRaw: number | undefined;
@@ -26,12 +25,14 @@ export class GameComponent implements OnInit, OnChanges {
 
   private setGameStatus(): void {
     if (this.releaseDateRaw && this.releaseDateDisplay) {
+      console.log("this.releaseDateRaw", this.releaseDateRaw);
+      console.log("this.releaseDateDisplay", this.releaseDateDisplay);
 
       let releaseDate: number = this.releaseDateRaw + 86400;
 
-      // TODO: Implement a counter to check if it's the third game that's been delayed
-      // If the release date is greater than 2024, set the status to bad/delayed
-      if (releaseDate > 1735689600) {
+      // If the release date is greater than 2026, set the status to bad/delayed
+      // 2025 in Unix time is 1735689600
+      if (releaseDate > 1767225600) {
         this.status = Status.bad; // The game was delayed
         this.releaseDateDisplay = 'Delayed';
       }
@@ -50,7 +51,7 @@ export class GameComponent implements OnInit, OnChanges {
         }
       }
     } else {
-      this.status = Status.bad;
+      this.status = Status.unknown;
     }
   };
 }

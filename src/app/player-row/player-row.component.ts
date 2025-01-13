@@ -5,7 +5,6 @@ import { CoverResponse, GameResponse, GameService } from '../services/game.servi
 export type Game = {
   igdbId: number;
   openCriticId?: number;
-  name: string;
   releaseDateRaw?: number | undefined;
   releaseDateDisplay?: string;
   cover: number;
@@ -38,7 +37,7 @@ export class PlayerRowComponent implements OnInit {
   public playerTotalScore: number = 0;
   public playerStatus: string = Status.unknown;
   private readonly GAMES_TO_COUNT = 10;
-  private readonly END_OF_2024 = 1735689600; // Unix timestamp for 12/31/2024 23:59:59
+  private readonly END_OF_2025 = 1767225600; // Unix timestamp for 12/31/2025 23:59:59
 
 
   constructor(
@@ -55,68 +54,68 @@ export class PlayerRowComponent implements OnInit {
 
   private getDraftedGames(): void {
     switch (this.playerName) {
-      case 'John':
-        this.draftedGames = [
-          { igdbId: 252476, name: `Prince of Persia: The Lost Crown`, cover: 0, openCriticScore: 87 },
-          { igdbId: 115060, name: `Dragon's Dogma II`, cover: 0, openCriticScore: 89 },
-          { igdbId: 217590, name: `Tekken 8`, cover: 0, openCriticScore: 90 },
-          { igdbId: 185252, name: `Warhammer 40,000: Space Marine II`, cover: 0, openCriticScore: 81 },
-          { igdbId: 37062, name: `Skull and Bones`, cover: 0, openCriticScore: 61 },
-          { igdbId: 217594, name: `Rise of the Ronin`, cover: 0, openCriticScore: 76 },
-          { igdbId: 122123, name: `Homeworld 3`, cover: 0, openCriticScore: 77 },
-          { igdbId: 127342, name: `Senua's Saga: Hellblade II`, cover: 0, openCriticScore: 81 },
-          { igdbId: 30208, name: `Dragon Age: The Veilguard`, cover: 0, openCriticScore: 79 },
-          { igdbId: 300976, name: `Assassin's Creed Shadows`, cover: 0 },
-          { igdbId: 26602, name: `Metaphor: ReFantazio`, cover: 0, openCriticScore: 92 },
-          { igdbId: 279636, name: `Visions of Mana`, cover: 0, openCriticScore: 77 },
-        ];
-        break;
-      case 'Buster':
-        this.draftedGames = [
-          { igdbId: 228525, name: `Hades II`, cover: 0 },
-          { igdbId: 217623, name: `Like a Dragon: Infinite Wealth`, cover: 0, openCriticScore: 90 },
-          { igdbId: 240009, name: `Elden Ring: Shadow of the Erdtree`, cover: 0, openCriticScore: 94 },
-          { igdbId: 213237, name: `Alone in the Dark`, cover: 0, openCriticScore: 63 },
-          { igdbId: 254340, name: `Princess Peach: Showtime!`, cover: 0, openCriticScore: 78 },
-          { igdbId: 266687, name: `Bandle Tale: A League of Legends Story`, cover: 0, openCriticScore: 74 },
-          { igdbId: 252827, name: `Star Wars Outlaws`, cover: 0, openCriticScore: 77 },
-          { igdbId: 101440, name: `S.T.A.L.K.E.R. 2: Heart of Chornobyl`, cover: 0, openCriticScore: 74 },
-          { igdbId: 252502, name: `Baby Steps`, cover: 0 },
-          { igdbId: 115289, name: `Hollow Knight: Silksong`, cover: 0 },
-          { igdbId: 116530, name: `Vampire: The Masquerade - Bloodlines 2`, cover: 0 },
-          { igdbId: 252997, name: `Apollo Justice: Ace Attorney Trilogy`, cover: 0, openCriticScore: 82 },
-        ];
-        break;
       case 'Hauze':
         this.draftedGames = [
-          { igdbId: 133236, name: `Final Fantasy VII Rebirth`, cover: 0, openCriticScore: 93 },
-          { igdbId: 252647, name: `Persona 3 Reload`, cover: 0, openCriticScore: 89 },
-          { igdbId: 259338, name: `Final Fantasy XIV: Dawntrail`, cover: 0, openCriticScore: 81 },
-          { igdbId: 136511, name: `Braid: Anniversary Edition`, cover: 0, openCriticScore: 89 },
-          { igdbId: 68353, name: `Unicorn Overlord`, cover: 0, openCriticScore: 88 },
-          { igdbId: 266690, name: `Paper Mario: The Thousand-Year Door`, cover: 0, openCriticScore: 89 },
-          { igdbId: 136627, name: `Suicide Squad: Kill the Justice League`, cover: 0, openCriticScore: 60 },
-          { igdbId: 217592, name: `Pacific Drive`, cover: 0, openCriticScore: 79 },
-          { igdbId: 250645, name: `Destiny 2: The Final Shape`, cover: 0, openCriticScore: 91 },
-          { igdbId: 262529, name: `Little Nightmares III`, cover: 0 },
-          { igdbId: 250623, name: `Foamstars`, cover: 0, openCriticScore: 59 },
-          { igdbId: 135994, name: `Avowed`, cover: 0 },
+          { igdbId: 52189, cover: 0 },
+          { igdbId: 325594, cover: 0 },
+          { igdbId: 302704, cover: 0 },
+          { igdbId: 318381, cover: 0 },
+          { igdbId: 135994, cover: 0 },
+          { igdbId: 228527, cover: 0 },
+          { igdbId: 214492, cover: 0 },
+          { igdbId: 313762, cover: 0 },
+          { igdbId: 313595, cover: 0 },
+          { igdbId: 314931, cover: 0 },
+          { igdbId: 303808, cover: 0 },
+          { igdbId: 314238, cover: 0 },
+        ];
+        break;
+      case 'John':
+        this.draftedGames = [
+          { igdbId: 305006, cover: 0 },
+          { igdbId: 279661, cover: 0 },
+          { igdbId: 250634, cover: 0 },
+          { igdbId: 141542, cover: 0 },
+          { igdbId: 288327, cover: 0 },
+          { igdbId: 279655, cover: 0 },
+          { igdbId: 320140, cover: 0 },
+          { igdbId: 279051, cover: 0 },
+          { igdbId: 279633, cover: 0 },
+          { igdbId: 266155, cover: 0 },
+          { igdbId: 267648, cover: 0 },
+          { igdbId: 314252, cover: 0 }
         ];
         break;
       case 'Nick':
         this.draftedGames = [
-          { igdbId: 136879, name: `Black Myth: Wukong`, cover: 0, openCriticScore: 81 },
-          { igdbId: 277143, name: `The Last of Us Part II: Remastered`, cover: 0, openCriticScore: 90 },
-          { igdbId: 37136, name: `Metroid Prime 4`, cover: 0 },
-          { igdbId: 250634, name: `Metal Gear Solid Delta: Snake Eater`, cover: 0, },
-          { igdbId: 250616, name: `Helldivers II`, cover: 0, openCriticScore: 82 },
-          { igdbId: 266674, name: `Mario vs. Donkey Kong`, cover: 0, openCriticScore: 77 },
-          { igdbId: 95118, name: `Last Epoch`, cover: 0, openCriticScore: 81 },
-          { igdbId: 222341, name: `Silent Hill 2`, cover: 0, openCriticScore: 87 },
-          { igdbId: 117170, name: `Stellar Blade`, cover: 0, openCriticScore: 82 },
-          { igdbId: 261145, name: `South Park: Snow Day!`, cover: 0, openCriticScore: 60 },
-          { igdbId: 255396, name: `JuJutsu Kaisen Cursed Clash`, cover: 0, openCriticScore: 49 },
-          { igdbId: 279635, name: `The Casting of Frank Stone`, cover: 0, openCriticScore: 68 },
+          { igdbId: 115289, cover: 0 },
+          { igdbId: 37136, cover: 0 },
+          { igdbId: 287846, cover: 0 },
+          { igdbId: 321048, cover: 0 },
+          { igdbId: 314246, cover: 0 },
+          { igdbId: 305152, cover: 0 },
+          { igdbId: 252826, cover: 0 },
+          { igdbId: 252853, cover: 0 },
+          { igdbId: 298526, cover: 0 },
+          { igdbId: 250618, cover: 0 },
+          { igdbId: 125633, cover: 0 },
+          { igdbId: 279647, cover: 0 },
+        ];
+        break;
+      case 'Buster':
+        this.draftedGames = [
+          { igdbId: 228525, cover: 0 },
+          { igdbId: 92550, cover: 0 },
+          { igdbId: 317627, cover: 0 },
+          { igdbId: 325591, cover: 0 },
+          { igdbId: 306143, cover: 0 },
+          { igdbId: 317317, cover: 0 },
+          { igdbId: 228530, cover: 0 },
+          { igdbId: 300976, cover: 0 },
+          { igdbId: 216315, cover: 0 },
+          { igdbId: 126460, cover: 0 },
+          { igdbId: 314276, cover: 0 },
+          { igdbId: 252502, cover: 0 },
         ];
         break;
     }
@@ -136,8 +135,9 @@ export class PlayerRowComponent implements OnInit {
       if (additionalGameData) {
         return {
           ...draftedGame,
-          releaseDateRaw: draftedGame.igdbId === 228525 ? undefined : additionalGameData.first_release_date,
-          releaseDateDisplay: draftedGame.igdbId === 228525 ? undefined : this.formatReleaseDate(additionalGameData.first_release_date),
+          name: additionalGameData.name,
+          releaseDateRaw: additionalGameData.first_release_date,
+          releaseDateDisplay: this.formatReleaseDate(additionalGameData.first_release_date),
           cover: additionalGameData.cover !== undefined ? additionalGameData.cover : draftedGame.cover,
           status: additionalGameData.status !== undefined ? additionalGameData.status : draftedGame.status
         };
@@ -160,7 +160,7 @@ export class PlayerRowComponent implements OnInit {
       const date = new Date(releaseDate * 1000);
       return date.toLocaleString('en-US', { month: 'long', day: 'numeric' });
     } else {
-      return 'Delayed';
+      return 'Unknown';
     }
   };
 
@@ -220,7 +220,7 @@ export class PlayerRowComponent implements OnInit {
     this.draftedGames = this.draftedGames.map(game => {
       if (!game.openCriticScore) {
         // If no score and it's a delayed game (or no release date, which we know are all delayed)
-        if (!game.releaseDateRaw || game.releaseDateRaw > this.END_OF_2024) {
+        if (!game.releaseDateRaw || game.releaseDateRaw > this.END_OF_2025) {
           return {
             ...game,
             openCriticScore: 0

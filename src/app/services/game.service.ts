@@ -8,6 +8,7 @@ export type GameResponse = {
   first_release_date?: number | undefined;
   cover?: number | undefined;
   status?: string | undefined;
+  name: string;
 };
 
 export type CoverResponse = {
@@ -28,7 +29,7 @@ export class GameService {
   constructor(
     private http: HttpClient
   ) {
-    
+
 
     this.igdbHeaders = this.igdbHeaders.append('x-api-key', environment.awsApiKey);
     // this.openCriticHeaders = this.openCriticHeaders.append('X-RapidAPI-Key', environment.rapidApiKey);
@@ -56,7 +57,7 @@ export class GameService {
   }
 
   public getOpenCriticGameId(gameName: string): Observable<number> {
-    const options = { headers: this.openCriticHeaders, params: { criteria: gameName }};
+    const options = { headers: this.openCriticHeaders, params: { criteria: gameName } };
 
     return this.http.get<number>(`${this.openCriticUrl}/search`, options);
   };
