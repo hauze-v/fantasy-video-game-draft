@@ -102,7 +102,7 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 279647, cover: 0 },
         ];
         break;
-      case 'Buster':
+      case 'Fez':
         this.draftedGames = [
           { igdbId: 228525, cover: 0 },
           { igdbId: 92550, cover: 0 },
