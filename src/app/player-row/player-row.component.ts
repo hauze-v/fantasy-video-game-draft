@@ -66,7 +66,7 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 313595, cover: 0 },
           { igdbId: 314931, cover: 0 },
           { igdbId: 303808, cover: 0, openCriticScore: 81 },
-          { igdbId: 314238, cover: 0 },
+          { igdbId: 314238, cover: 0, openCriticScore: 73 },
         ];
         break;
       case 'John':
