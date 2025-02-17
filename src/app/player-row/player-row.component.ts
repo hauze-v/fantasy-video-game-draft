@@ -39,7 +39,6 @@ export class PlayerRowComponent implements OnInit {
   private readonly GAMES_TO_COUNT = 10;
   private readonly END_OF_2025 = 1767225600; // Unix timestamp for 12/31/2025 23:59:59
 
-
   constructor(
     private gameService: GameService,
   ) { }
@@ -60,10 +59,10 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 325594, cover: 0 },
           { igdbId: 302704, cover: 0 },
           { igdbId: 318381, cover: 0 },
-          { igdbId: 135994, cover: 0 },
+          { igdbId: 135994, cover: 0, openCriticScore: 82 },
           { igdbId: 228527, cover: 0 },
-          { igdbId: 214492, cover: 0 },
-          { igdbId: 313762, cover: 0 },
+          { igdbId: 214492, cover: 0, openCriticScore: 81 },
+          { igdbId: 313762, cover: 0, openCriticScore: 77 },
           { igdbId: 313595, cover: 0 },
           { igdbId: 314931, cover: 0 },
           { igdbId: 303808, cover: 0, openCriticScore: 81 },
@@ -72,7 +71,7 @@ export class PlayerRowComponent implements OnInit {
         break;
       case 'John':
         this.draftedGames = [
-          { igdbId: 305006, cover: 0 },
+          { igdbId: 305006, cover: 0, openCriticScore: 82 },
           { igdbId: 279661, cover: 0 },
           { igdbId: 250634, cover: 0 },
           { igdbId: 141542, cover: 0 },
@@ -96,7 +95,7 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 305152, cover: 0 },
           { igdbId: 252826, cover: 0 },
           { igdbId: 252853, cover: 0 },
-          { igdbId: 298526, cover: 0 },
+          { igdbId: 298526, cover: 0, openCriticScore: 89 },
           { igdbId: 250618, cover: 0 },
           { igdbId: 125633, cover: 0 },
           { igdbId: 279647, cover: 0 },
@@ -202,19 +201,6 @@ export class PlayerRowComponent implements OnInit {
 
   }
 
-  // private async getOpenCriticData(): Promise<void> {
-  //   // For each game in draftedGames, call the OpenCritic API to get the game's ID
-  //   // Then call the OpenCritic API to get the game's top critic score
-
-  //   // Get the OpenCritic game IDs
-  //   this.draftedGames.forEach(async (game: Game) => {
-  //     game.openCriticId = await firstValueFrom(this.gameService.getOpenCriticGameId(game.name));
-
-  //     // Get the OpenCritic game scores
-  //     game.openCriticScore = await firstValueFrom(this.gameService.getOpenCriticScore(game.openCriticId));
-  //   });
-  // }
-
   private processScores(): void {
     // First, set scores of 0 for delayed games
     this.draftedGames = this.draftedGames.map(game => {
@@ -230,19 +216,23 @@ export class PlayerRowComponent implements OnInit {
       return game;
     });
 
-    // Get all scores and sort them in descending order
-    const scores = this.draftedGames
+    // Get all valid scores (non-zero) and sort them in descending order
+    const validScores = this.draftedGames
       .map(game => game.openCriticScore || 0)
+      .filter(score => score > 0)
       .sort((a, b) => b - a);
 
-    // Take the top 10 scores
-    const topScores = scores.slice(0, this.GAMES_TO_COUNT);
+    // Determine how many scores to use (all scores if less than GAMES_TO_COUNT, otherwise GAMES_TO_COUNT)
+    const scoresToUse = Math.min(validScores.length, this.GAMES_TO_COUNT);
 
-    // Calculate total from top 10 scores
+    // Take the top N scores
+    const topScores = validScores.slice(0, scoresToUse);
+
+    // Calculate total from scores
     this.playerTotalScore = topScores.reduce((sum, score) => sum + score, 0);
 
-    // Calculate average from the total of top 10 scores
-    this.playerAvgScore = this.playerTotalScore / this.GAMES_TO_COUNT;
+    // Calculate average using the actual number of scores we're counting
+    this.playerAvgScore = scoresToUse > 0 ? this.playerTotalScore / scoresToUse : 0;
 
     // Emit the updated average score
     this.playerScoreUpdated.emit({
