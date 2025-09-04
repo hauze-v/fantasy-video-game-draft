@@ -55,12 +55,12 @@ export class PlayerRowComponent implements OnInit {
     switch (this.playerName) {
       case 'Hauze':
         this.draftedGames = [
-          { igdbId: 52189, cover: 0 },
+          { igdbId: 52189, cover: 0 },  // GTA - delayed
           { igdbId: 325594, cover: 0, openCriticScore: 90 },
-          { igdbId: 302704, cover: 0 },
-          { igdbId: 318381, cover: 0 },
+          { igdbId: 302704, cover: 0, openCriticScore: 86 },
+          { igdbId: 318381, cover: 0 }, // Football Manager - delayed
           { igdbId: 135994, cover: 0, openCriticScore: 82 },
-          { igdbId: 228527, cover: 0 },
+          { igdbId: 228527, cover: 0 }, // JUDAS - likely delayed
           { igdbId: 214492, cover: 0, openCriticScore: 81 },
           { igdbId: 313762, cover: 0, openCriticScore: 77 },
           { igdbId: 313595, cover: 0, openCriticScore: 84 },
@@ -73,7 +73,7 @@ export class PlayerRowComponent implements OnInit {
         this.draftedGames = [
           { igdbId: 305006, cover: 0, openCriticScore: 82 },
           { igdbId: 279661, cover: 0, openCriticScore: 90 },
-          { igdbId: 250634, cover: 0 },
+          { igdbId: 250634, cover: 0, openCriticScore: 86 },
           { igdbId: 141542, cover: 0 },
           { igdbId: 288327, cover: 0 },
           { igdbId: 279655, cover: 0 },
@@ -81,7 +81,7 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 279051, cover: 0, openCriticScore: 82 },
           { igdbId: 279633, cover: 0 },
           { igdbId: 266155, cover: 0 },
-          { igdbId: 267648, cover: 0 },
+          { igdbId: 267648, cover: 0, openCriticScore: 61 },
           { igdbId: 314252, cover: 0 }
         ];
         break;
@@ -103,13 +103,13 @@ export class PlayerRowComponent implements OnInit {
         break;
       case 'Fez':
         this.draftedGames = [
-          { igdbId: 228525, cover: 0 },
+          { igdbId: 228525, cover: 0, openCriticScore: 90 },
           { igdbId: 92550, cover: 0 },
           { igdbId: 317627, cover: 0 },
-          { igdbId: 325591, cover: 0 },
+          { igdbId: 325591, cover: 0, openCriticScore: 81 },
           { igdbId: 306143, cover: 0, openCriticScore: 78 },
           { igdbId: 317317, cover: 0, openCriticScore: 81 },
-          { igdbId: 228530, cover: 0 },
+          { igdbId: 228530, cover: 0, openCriticScore: 90 },
           { igdbId: 300976, cover: 0, openCriticScore: 81 },
           { igdbId: 216315, cover: 0 },
           { igdbId: 126460, cover: 0 },
