@@ -64,7 +64,7 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 214492, cover: 0, openCriticScore: 81 },
           { igdbId: 313762, cover: 0, openCriticScore: 77 },
           { igdbId: 313595, cover: 0, openCriticScore: 84 },
-          { igdbId: 314931, cover: 0 },
+          { igdbId: 314931, cover: 0, openCriticScore: 66 },
           { igdbId: 303808, cover: 0, openCriticScore: 81 },
           { igdbId: 314238, cover: 0, openCriticScore: 73 },
         ];
@@ -74,38 +74,38 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 305006, cover: 0, openCriticScore: 82 },
           { igdbId: 279661, cover: 0, openCriticScore: 90 },
           { igdbId: 250634, cover: 0, openCriticScore: 86 },
-          { igdbId: 141542, cover: 0 },
-          { igdbId: 288327, cover: 0 },
-          { igdbId: 279655, cover: 0 },
-          { igdbId: 320140, cover: 0 },
+          { igdbId: 141542, cover: 0 }, // Ark II - DELAYED
+          { igdbId: 288327, cover: 0, openCriticScore: 79 },
+          { igdbId: 279655, cover: 0 }, // Light no Fire DELAYED
+          { igdbId: 320140, cover: 0 }, // Subtautica 2 DELAYED
           { igdbId: 279051, cover: 0, openCriticScore: 82 },
-          { igdbId: 279633, cover: 0 },
-          { igdbId: 266155, cover: 0 },
+          { igdbId: 279633, cover: 0 }, // Crazy Taxi DELAYED
+          { igdbId: 266155, cover: 0 }, // Assetto Corsa Evo DELAYED
           { igdbId: 267648, cover: 0, openCriticScore: 61 },
-          { igdbId: 314252, cover: 0 }
+          { igdbId: 314252, cover: 0, openCriticScore: 81 }
         ];
         break;
       case 'Nick':
         this.draftedGames = [
-          { igdbId: 115289, cover: 0 },
-          { igdbId: 37136, cover: 0 },
+          { igdbId: 115289, cover: 0, openCriticScore: 91 },
+          { igdbId: 37136, cover: 0, openCriticScore: 81 },
           { igdbId: 287846, cover: 0, openCriticScore: 85 },
           { igdbId: 321048, cover: 0, openCriticScore: 84 },
-          { igdbId: 314246, cover: 0 },
+          { igdbId: 314246, cover: 0, openCriticScore: 82 },
           { igdbId: 305152, cover: 0, openCriticScore: 92 },
           { igdbId: 252826, cover: 0, openCriticScore: 77 },
           { igdbId: 252853, cover: 0, openCriticScore: 86 },
           { igdbId: 298526, cover: 0, openCriticScore: 89 },
           { igdbId: 250618, cover: 0 },
-          { igdbId: 125633, cover: 0, openCriticScore: 71 },
+          { igdbId: 125633, cover: 0 },
           { igdbId: 279647, cover: 0 },
         ];
         break;
       case 'Fez':
         this.draftedGames = [
           { igdbId: 228525, cover: 0, openCriticScore: 90 },
-          { igdbId: 92550, cover: 0 },
-          { igdbId: 317627, cover: 0 },
+          { igdbId: 92550, cover: 0 }, // FABLE DELAYED
+          { igdbId: 317627, cover: 0, openCriticScore: 87 },
           { igdbId: 325591, cover: 0, openCriticScore: 81 },
           { igdbId: 306143, cover: 0, openCriticScore: 78 },
           { igdbId: 317317, cover: 0, openCriticScore: 81 },
@@ -113,8 +113,8 @@ export class PlayerRowComponent implements OnInit {
           { igdbId: 300976, cover: 0, openCriticScore: 81 },
           { igdbId: 216315, cover: 0 },
           { igdbId: 126460, cover: 0 },
-          { igdbId: 314276, cover: 0 },
-          { igdbId: 252502, cover: 0 },
+          { igdbId: 314276, cover: 0, openCriticScore: 74 },
+          { igdbId: 252502, cover: 0, openCriticScore: 77 },
         ];
         break;
     }
@@ -202,37 +202,44 @@ export class PlayerRowComponent implements OnInit {
   }
 
   private processScores(): void {
-    // First, set scores of 0 for delayed games
-    this.draftedGames = this.draftedGames.map(game => {
-      if (!game.openCriticScore) {
-        // If no score and it's a delayed game (or no release date, which we know are all delayed)
-        if (!game.releaseDateRaw || game.releaseDateRaw > this.END_OF_2025) {
-          return {
-            ...game,
-            openCriticScore: 0
-          };
-        }
-      }
-      return game;
-    });
-
-    // Get all valid scores (non-zero) and sort them in descending order
-    const validScores = this.draftedGames
-      .map(game => game.openCriticScore || 0)
-      .filter(score => score > 0)
+    // Count games without scores (delays)
+    const gamesWithoutScores = this.draftedGames.filter(game => !game.openCriticScore).length;
+    
+    // Calculate penalty zeros: allow 2 free delays, then count extras as zeros
+    const FREE_DELAYS_ALLOWED = 2;
+    const penaltyZeros = Math.max(0, gamesWithoutScores - FREE_DELAYS_ALLOWED);
+    
+    // Get all actual scores (games that have openCriticScore)
+    const actualScores = this.draftedGames
+      .filter(game => game.openCriticScore && game.openCriticScore > 0)
+      .map(game => game.openCriticScore!)
       .sort((a, b) => b - a);
 
-    // Determine how many scores to use (all scores if less than GAMES_TO_COUNT, otherwise GAMES_TO_COUNT)
-    const scoresToUse = Math.min(validScores.length, this.GAMES_TO_COUNT);
+    // Combine actual scores with penalty zeros for calculation
+    const allScoresForCalculation = [...actualScores];
+    for (let i = 0; i < penaltyZeros; i++) {
+      allScoresForCalculation.push(0);
+    }
+    
+    // Sort all scores (including penalty zeros) in descending order
+    allScoresForCalculation.sort((a, b) => b - a);
 
-    // Take the top N scores
-    const topScores = validScores.slice(0, scoresToUse);
+    // Take up to GAMES_TO_COUNT scores for the calculation
+    const scoresToUse = Math.min(allScoresForCalculation.length, this.GAMES_TO_COUNT);
+    const finalScores = allScoresForCalculation.slice(0, scoresToUse);
 
-    // Calculate total from scores
-    this.playerTotalScore = topScores.reduce((sum, score) => sum + score, 0);
-
-    // Calculate average using the actual number of scores we're counting
+    // Calculate total and average
+    this.playerTotalScore = finalScores.reduce((sum, score) => sum + score, 0);
     this.playerAvgScore = scoresToUse > 0 ? this.playerTotalScore / scoresToUse : 0;
+
+    // Debug logging to help verify calculations
+    console.log(`${this.playerName} Scoring:`, {
+      gamesWithoutScores,
+      penaltyZeros,
+      actualScores: actualScores.length,
+      finalScores,
+      average: this.playerAvgScore
+    });
 
     // Emit the updated average score
     this.playerScoreUpdated.emit({
